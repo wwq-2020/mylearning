@@ -60,7 +60,7 @@ func doReduce(
 		if err != nil {
 			log.Fatalf("error read output of map.Error msg:%v\n", err)
 		}
-		kvs = append(kvs, ToKeyValue(strings.Split(string(dataInBytes), "\n"))...)
+		kvs = append(kvs, ToKVs(strings.Split(string(dataInBytes), "\n"))...)
 
 	}
 
@@ -90,7 +90,7 @@ func groupByKey(kvs []KeyValue) map[string][]string {
 	return key2Vals
 }
 
-func ToKeyValue(content []string) []KeyValue {
+func ToKVs(content []string) []KeyValue {
 	var kvs []KeyValue
 	for _, item := range content {
 		if !strings.Contains(item, ",") {
